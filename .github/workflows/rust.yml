@@ -15,8 +15,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Configure
-      run: rustup target add aarch64-unknown-linux-gnu
+      run: |
+        rustup target add aarch64-unknown-linux-gnu
+        sudo apt-get install gcc-aarch64-linux-gnu
     - name: Build standard
       run: cargo build --target aarch64-unknown-linux-gnu --release
-    - name: Build no config
-      run: cargo build --target aarch64-unknown-linux-gnu --release --no-default-features
+    - uses: actions/upload-artifact@v3
+      with:
+        name: package
+        path: |
+          target/aarch64-unknown-linux-gnu/release/argon_fan_controller
+          argon_fan_controller.service
+          argon_fan_controller_cfg.yml
+          deploy.sh
