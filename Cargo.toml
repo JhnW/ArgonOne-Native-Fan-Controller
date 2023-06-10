@@ -1,0 +1,14 @@
+[package]
+name = "argon_fan_controller"
+version = "1.0.0"
+edition = "2021"
+
+
+[dependencies]
+systemstat = "0.2.3"
+rppal = "0.14.1"
+yaml-rust = { version = "0.4", optional = true }
+
+[features]
+default = ["configuration_file"]
+configuration_file=["dep:yaml-rust"]
