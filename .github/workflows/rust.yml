@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Configure
+      run: rustup target add aarch64-unknown-linux-gnu
     - name: Build standard
       run: cargo build --target aarch64-unknown-linux-gnu --release
     - name: Build no config
