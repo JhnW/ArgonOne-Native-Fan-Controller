@@ -3,3 +3,7 @@ linker = "/usr/bin/aarch64-linux-gnu-gcc"
 
 [build]
 rustflags = ["-D", "warnings"]
+
+[profile.release]
+strip = "symbols"
+lto = true
